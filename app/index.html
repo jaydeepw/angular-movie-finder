@@ -1,26 +1,28 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app>
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body ng-controller="movieFinderCtrl">
-  <ul class="menu">
+  <!-- <ul class="menu">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
-  </ul>
+  </ul> -->
 
-  <div ng-view></div>
+  <!-- <div ng-view></div> -->
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <h1>Movie Finder using <a href="https://twitter.com/@angularjs">@AngularJS</a> </h1>
 
   <input type="input" ng-model="moviename" />
   <button ng-click="onSearchClicked(moviename)"> Search </button>
 
-  <div ng-model="result_movie_name">
-    {{result_movie_name}}
-  </div>
+  <ul>
+    <li ng-repeat="movie in moviesList">
+      {{movie.title}}
+    </li>
+  </ul>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>

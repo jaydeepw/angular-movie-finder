@@ -16,7 +16,8 @@ MyCtrl2.$inject = [];
 
 
 function movieFinderCtrl($scope, $http) {
-	console.log('movieFinderCtrl is working.');
+
+	 //$scope.moviesList = [{"name":"Movie1"}, {"name":"Movie2"}];
 
 	$scope.onSearchClicked = function(moviename) {
 		searchMovie(moviename, $scope, $http);
@@ -26,18 +27,17 @@ function movieFinderCtrl($scope, $http) {
 function searchMovie(moviename, $scope, $http) {
 	console.log(moviename);
 
-	var url1 = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=" + API_KEY + "&q=" + moviename + "&page_limit=1&callback=JSON_CALLBACK";
+	var url1 = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=" + API_KEY + "&q=" + moviename + "&callback=JSON_CALLBACK";
 
 	$http({method: 'JSONP', url: url1})
 	.success(function(data, status, headers, config) {
 	  	var movieResult = data;
 	    // this callback will be called asynchronously
 	    // when the response is available
-	    console.log('Success ');
-	    console.log(movieResult);
-	    var title = movieResult.movies[0].title;
-	    console.log(title);
-	    $scope.result_movie_name = title;
+	    // console.log('Success ');
+	    // console.log(movieResult);
+	    console.log("total: " + movieResult.movies.length);
+	    $scope.moviesList = movieResult.movies;
 	  })
 	.error(function(data, status, headers, config) {
 	    // called asynchronously if an error occurs
