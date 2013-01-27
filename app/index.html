@@ -2,27 +2,40 @@
 <html lang="en" ng-app>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body ng-controller="movieFinderCtrl">
-  <!-- <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul> -->
+  <div class="hero-unit">
+    <h1>Movie Finder
+      <p>
+        using <a href="https://twitter.com/@angularjs">@AngularJS</a>
+         <a href="https://twitter.com/twbootstrap">@TwitterBootstrap</a>
+         <a href="https://twitter.com/MasheryDev">@Mashery API</a>
+      </p>
+    </h1>
 
-  <!-- <div ng-view></div> -->
+    <form>
+      <fieldset>
+        <input type="input" ng-model="moviename" placeholder="Enter movie name..."/>
+        <p>
+          <button class="btn" ng-click="onSearchClicked(moviename)"> Search </button>
+        </p>
+      </fieldset>
+    </form>
 
-  <h1>Movie Finder using <a href="https://twitter.com/@angularjs">@AngularJS</a> </h1>
+    <p ng-model="movie_results">
+      {{movie_results}}
+    </p>
+    <ul>
+      <li ng-repeat="movie in moviesList">
+        {{movie.title}}
+      </li>
+    </ul>
 
-  <input type="input" ng-model="moviename" />
-  <button ng-click="onSearchClicked(moviename)"> Search </button>
-
-  <ul>
-    <li ng-repeat="movie in moviesList">
-      {{movie.title}}
-    </li>
-  </ul>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
