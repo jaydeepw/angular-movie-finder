@@ -1,12 +1,14 @@
+
+
 <div class="row-fluid">
-<div class="span10">
-  <!--Body content-->
+	<div class="span10">
 
-  <ul class="panel">
-    <li ng-repeat="movie in moviesList" class="thumbnail">
-      <p>{{movie.title}}</p>
-    </li>
-  </ul>
+	  <!--Body content-->
+	  <ul class="panel">
+	    <li ng-repeat="movie in moviesList" class="thumbnail">
+	      <a href="#/movie/{{movie.id}}"><p>{{movie.title}}</p></a>
+	    </li>
+	  </ul>
 
-</div>
+	</div>
 </div>

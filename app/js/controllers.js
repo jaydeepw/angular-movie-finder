@@ -9,27 +9,24 @@ var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
 function MyCtrl1($scope, $routeParams) {
 	console.log($routeParams);
 }
-// MyCtrl1.$inject = ['$scope', '$routeParams'];
-
 
 function MyCtrl2 ($scope, $routeParams) {
 	console.log($routeParams);
 }
-MyCtrl2.$inject = [];
+
+function MovieDetails ($scope, $routeParams) {
+	console.log($routeParams);
+}
 
 
 function movieFinderCtrl($scope, $routeParams, $http) {
 
 	$scope.onSearchClicked = function(moviename) {
-		searchMovie(moviename, $scope, $http, $routeParams);
+		searchMovie(moviename, $scope, $http);
 	};
 }
 
-// movieFinderCtrl.$inject = ['$scope', '$routeParams', '$http'];
-
-
-function searchMovie(moviename, $scope, $http, $routeParams) {
-	console.log($routeParams);
+function searchMovie(moviename, $scope, $http) {
 	var APIUrl = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=" + API_KEY + "&q=" + moviename + "&callback=JSON_CALLBACK";
 
 	$http({method: 'JSONP', url: APIUrl})
