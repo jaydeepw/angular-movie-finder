@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,23 +18,24 @@
       </p>
     </h1>
 
-    <form>
-      <fieldset>
-        <input type="input" ng-model="moviename" placeholder="Enter movie name..."/>
-        <p>
-          <button class="btn" ng-click="onSearchClicked(moviename)"> Search </button>
-        </p>
-      </fieldset>
-    </form>
+  <form>
+    <fieldset>
+      <input type="input" ng-model="moviename" placeholder="Enter movie name..."/>
+      <p>
+        <button class="btn" ng-click="onSearchClicked(moviename)"> Search </button>
+      </p>
+    </fieldset>
+  </form>
 
-    <p ng-model="movie_results">
-      {{movie_results}}
-    </p>
-    <ul>
-      <li ng-repeat="movie in moviesList">
-        {{movie.title}}
-      </li>
-    </ul>
+  <p ng-model="movie_results">
+    {{movie_results}}
+  </p>
+
+  <div ng-view>
+    
+  </div>
+
+    
 
   </div>
 

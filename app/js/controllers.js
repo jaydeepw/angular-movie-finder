@@ -6,36 +6,40 @@
 var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
 
 /* Controllers */
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+function MyCtrl1($scope, $routeParams) {
+	console.log($routeParams);
+}
+// MyCtrl1.$inject = ['$scope', '$routeParams'];
 
 
-function MyCtrl2() {
+function MyCtrl2 ($scope, $routeParams) {
+	console.log($routeParams);
 }
 MyCtrl2.$inject = [];
 
 
-function movieFinderCtrl($scope, $http) {
-
-	 //$scope.moviesList = [{"name":"Movie1"}, {"name":"Movie2"}];
+function movieFinderCtrl($scope, $routeParams, $http) {
 
 	$scope.onSearchClicked = function(moviename) {
-		searchMovie(moviename, $scope, $http);
+		searchMovie(moviename, $scope, $http, $routeParams);
 	};
 }
 
-function searchMovie(moviename, $scope, $http) {
-	console.log(moviename);
+// movieFinderCtrl.$inject = ['$scope', '$routeParams', '$http'];
 
+
+function searchMovie(moviename, $scope, $http, $routeParams) {
+	console.log($routeParams);
 	var APIUrl = "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=" + API_KEY + "&q=" + moviename + "&callback=JSON_CALLBACK";
 
 	$http({method: 'JSONP', url: APIUrl})
 	.success(function(data, status, headers, config) {
+
 	  	var movieResult = data;
 	    // this callback will be called asynchronously
 	    // when the response is available
 	    // console.log('Success ');
-	    // console.log(movieResult);
+	    console.log(movieResult);
 	    var totalResults = movieResult.movies.length;
 	    console.log("total: " + totalResults);
 
