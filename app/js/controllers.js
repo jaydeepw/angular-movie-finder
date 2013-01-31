@@ -3,11 +3,12 @@
 // You may need to change the API key in case this demo app does not work
 // in future.
 // You can get it here.  http://developer.rottentomatoes.com/
-var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
+var API_KEY = "594g2eb4b83qt359uru4b53j";
 
 /* Controllers */
 
-function MovieDetails ($scope, $routeParams) {
+function MovieDetails ($scope, $routeParams, $location) {
+
 	$scope.movieId = $routeParams.movieId;
 
 	for( var i = $scope.moviesList.length - 1; i >= 0; i-- ) {
@@ -21,11 +22,22 @@ function MovieDetails ($scope, $routeParams) {
 }
 
 
-function movieFinderCtrl($scope, $routeParams, $http) {
+function movieFinderCtrl($scope, $routeParams, $http, $location) {
+
+	redirectToBaseUI($location);
 
 	$scope.onSearchClicked = function(moviename) {
+		redirectToBaseUI($location);
 		searchMovie(moviename, $scope, $http);
 	};
+}
+
+function redirectToBaseUI($location) {
+	// set the correct path if it is not.
+	if( $location.path() != "/" ) {
+		console.log('setting the root path first');
+		$location.path("/");
+	}
 }
 
 function searchMovie(moviename, $scope, $http) {
