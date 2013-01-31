@@ -6,16 +6,10 @@
 var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
 
 /* Controllers */
-function MyCtrl1($scope, $routeParams) {
-	console.log($routeParams);
-}
-
-function MyCtrl2 ($scope, $routeParams) {
-	console.log($routeParams);
-}
 
 function MovieDetails ($scope, $routeParams) {
 	console.log($routeParams);
+	$scope.movieId = $routeParams.movieId;
 }
 
 
