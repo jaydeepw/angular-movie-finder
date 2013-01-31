@@ -8,8 +8,16 @@ var API_KEY = "7ect2zrb24k3fpa2bttzswqn";
 /* Controllers */
 
 function MovieDetails ($scope, $routeParams) {
-	console.log($routeParams);
 	$scope.movieId = $routeParams.movieId;
+
+	for( var i = $scope.moviesList.length - 1; i >= 0; i-- ) {
+		var movie = $scope.moviesList[i];
+
+		if( movie.id == $routeParams.movieId ) {
+			$scope.movie = movie;
+			console.log(movie);
+		}
+	};
 }
 
 
@@ -30,9 +38,9 @@ function searchMovie(moviename, $scope, $http) {
 	    // this callback will be called asynchronously
 	    // when the response is available
 	    // console.log('Success ');
-	    console.log(movieResult);
+	    // console.log(movieResult);
 	    var totalResults = movieResult.movies.length;
-	    console.log("total: " + totalResults);
+	    // console.log("total: " + totalResults);
 
 	    // if movies are found.
 	    // Update the UI.
